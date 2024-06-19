@@ -152,12 +152,12 @@ const Population = (props: Props) => {
 
   useEffect(() => {
     if (populations.length !== 0) {
-      var cd = transformData(populations);
-      setChart_data(cd);
-      console.log(chart_data);
-      if (chart_data.length !== 0) {
+      const data: TransformedData[] =
+        transformData(populations);
+      setChart_data(data);
+      if (data.length !== 0) {
         // ラインのキー
-        const keys = Object.keys(chart_data[0]).filter(
+        const keys = Object.keys(data[0]).filter(
           (key) => key !== 'year'
         );
         const colors = keys.map((key, index) => {
