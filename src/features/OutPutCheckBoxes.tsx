@@ -5,9 +5,13 @@ import styles from '@/features/OutPutCheckBoxes.module.css';
 import { PREF } from '@/types/PREF';
 import axios from 'axios';
 import { type Dispatch, useState, useEffect } from 'react';
+import { CHECKCODE } from '@/types/CHECKCODE';
 
 type Props = {
-  setCheckCodes: Dispatch<React.SetStateAction<string[]>>;
+  // setCheckCodes: Dispatch<React.SetStateAction<string[]>>;
+  setCheckCodes: Dispatch<
+    React.SetStateAction<CHECKCODE[]>
+  >;
 };
 
 const OutPutCheckBoxes = (props: Props) => {
