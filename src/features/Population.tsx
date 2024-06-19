@@ -183,13 +183,36 @@ const Population = (props: Props) => {
       <div>
         <div>
           <LineChart
-            width={700}
-            height={300}
+            width={1000}
+            height={400}
             data={chart_data}
+            margin={{
+              top: 50,
+              right: 60,
+              left: 50,
+              bottom: 50,
+            }}
           >
             <CartesianGrid stroke="#ccc" />
-            <XAxis dataKey="year" />
-            <YAxis />
+            <XAxis
+              dataKey="year"
+              label={{
+                value: '年度',
+                position: 'insideRight',
+                offset: -55,
+              }}
+              interval={0}
+              angle={-30}
+              dx={-10}
+              dy={5}
+            />
+            <YAxis
+              label={{
+                value: '人口',
+                position: 'insideTop',
+                offset: -40,
+              }}
+            />
             {lines}
             <Legend />
             <Tooltip />
