@@ -21,17 +21,6 @@ export function GetChecked(props: Props) {
     ) as HTMLInputElement;
 
     function handleChange() {
-      //   props.setCheckCodes((prev) => {
-      //     if (prev.includes(props.pref.prefCode)) {
-      //       // すでに選択されている場合は削除
-      //       return prev.filter(
-      //         (i) => i !== props.pref.prefCode
-      //       );
-      //     } else {
-      //       // 選択されていない場合は追加
-      //       return [...prev, props.pref.prefCode];
-      //     }
-      //   });
       props.setCheckCodes((prev) => {
         const existingIndex = prev.findIndex(
           (i) => i.prefCode === props.pref.prefCode

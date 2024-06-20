@@ -8,27 +8,30 @@ import { CHECKCODE } from '@/types/CHECKCODE';
 import RadioButton from '@/components/RadioButton/RadioButton';
 
 export default function Home() {
-  // const [checkCodes, setCheckCodes] = useState<string[]>(
-  //   []
-  // );
-  const [checkCodes2, setCheckCodes2] = useState<
-    CHECKCODE[]
-  >([]);
-  console.log(checkCodes2);
-
+  const [checkCodes, setCheckCodes] = useState<CHECKCODE[]>(
+    []
+  );
+  const [selected, setSelected] =
+    useState<string>('総人口');
   return (
     <main className={styles.main}>
       <div>
         <Title title="都道府県" />
       </div>
       <div>
-        <OutPutCheckBoxes setCheckCodes={setCheckCodes2} />
+        <OutPutCheckBoxes setCheckCodes={setCheckCodes} />
       </div>
       <div>
-        <RadioButton />
+        <RadioButton
+          selected={selected}
+          setSelected={setSelected}
+        />
       </div>
       <div>
-        <Population checkCodes={checkCodes2} />
+        <Population
+          selected={selected}
+          checkCodes={checkCodes}
+        />
       </div>
     </main>
   );

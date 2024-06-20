@@ -1,40 +1,45 @@
-'use client';
-import { useState } from 'react';
 import React from 'react';
+import { type Dispatch } from 'react';
 
 const items = [
   {
     id: 'totalPopulation',
-    value: 0,
+    value: '総人口',
     label: '総人口',
   },
   {
     id: 'youngPopulation',
-    value: 1,
+    value: '年少人口',
     label: '年少人口',
   },
   {
     id: 'workingAgePopulation',
-    value: 2,
+    value: '生産年齢人口',
     label: '生産年齢人口',
   },
   {
     id: 'geriatricPopulation',
-    value: 3,
+    value: '老年人口',
     label: '老年人口',
   },
 ];
 
-const RadioButton = () => {
+type Props = {
+  selected: string;
+  setSelected: Dispatch<React.SetStateAction<string>>;
+};
+
+const RadioButton = (props: Props) => {
   /** 選択中のラジオボタンvalue */
-  const [selected, setSelected] = useState<number>(0);
+  // const [selected, setSelected] = useState<number>(0);
+  const setSelected = props.setSelected;
+  const selected = props.selected;
   /** ラジオボタン切り替えイベント */
   const changeValue = (
     event: React.ChangeEvent<HTMLInputElement>
-  ) => setSelected(parseInt(event.target.value));
+  ) => setSelected(event.target.value);
   return (
     <div>
-      <div>{selected}</div>
       {items.map((item) => {
         return (
           <div key={item.id}>

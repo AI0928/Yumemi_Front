@@ -7,7 +7,6 @@ import { type Dispatch } from 'react';
 import { CHECKCODE } from '@/types/CHECKCODE';
 type PrefProps = {
   pref: PREF;
-  // setCheckCodes: Dispatch<React.SetStateAction<string[]>>;
   setCheckCodes: Dispatch<
     React.SetStateAction<CHECKCODE[]>
   >;
