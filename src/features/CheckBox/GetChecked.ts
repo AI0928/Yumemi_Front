@@ -3,13 +3,13 @@
 import React from 'react';
 import { type Dispatch, useEffect } from 'react';
 import Prefecture from '@/types/Prefecture';
-import { CHECKCODE } from '@/types/CHECKCODE';
+import CheckCode from '@/types/CheckCode';
 
 type Props = {
   pref: Prefecture;
   // setCheckCodes: Dispatch<React.SetStateAction<string[]>>;
   setCheckCodes: Dispatch<
-    React.SetStateAction<CHECKCODE[]>
+    React.SetStateAction<CheckCode[]>
   >;
 };
 export function GetChecked(props: Props) {
