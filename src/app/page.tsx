@@ -5,6 +5,7 @@ import styles from '@/app/page.module.css';
 import { useState } from 'react';
 import Population from '@/features/Population';
 import { CHECKCODE } from '@/types/CHECKCODE';
+import RadioButton from '@/components/RadioButton/RadioButton';
 
 export default function Home() {
   // const [checkCodes, setCheckCodes] = useState<string[]>(
@@ -22,6 +23,9 @@ export default function Home() {
       </div>
       <div>
         <OutPutCheckBoxes setCheckCodes={setCheckCodes2} />
+      </div>
+      <div>
+        <RadioButton />
       </div>
       <div>
         <Population checkCodes={checkCodes2} />
