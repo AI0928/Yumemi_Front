@@ -22,10 +22,16 @@ export default function Home() {
         <OutPutCheckBoxes setCheckCodes={setCheckCodes} />
       </div>
       <div>
+        <Title title="人口構成" />
+      </div>
+      <div>
         <RadioButton
           selected={selected}
           setSelected={setSelected}
         />
+      </div>
+      <div>
+        <Title title="人口データ折れ線グラフ" />
       </div>
       <div>
         <Population
