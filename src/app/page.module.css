@@ -4,3 +4,9 @@
   flex-direction: column; /* 子要素を縦方向に配置 */
   padding: 20px; /* パディングを追加 */
 }
+
+@media (max-width: 600px) {
+  .main {
+    padding: 0px; /* パディングを追加 */
+  }
+}
