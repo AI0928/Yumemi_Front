@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Prefecture from '@/types/Prefecture';
 
-export const usePrefectures = () => {
+const usePrefectures = () => {
   const [prefectures, setPrefectures] = useState<
     Prefecture[]
   >([]);
@@ -24,3 +24,5 @@ export const usePrefectures = () => {
 
   return prefectures;
 };
+
+export default usePrefectures;

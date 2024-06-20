@@ -3,13 +3,13 @@ import React from 'react';
 import { CheckBox } from '@/features/CheckBox/CheckBox';
 import styles from '@/features/OutPutCheckBoxes/OutPutCheckBoxes.module.css';
 import Prefecture from '@/types/Prefecture';
-import { type Dispatch, useState, useEffect } from 'react';
-import { CHECKCODE } from '@/types/CHECKCODE';
-import { usePrefectures } from './OutPutCheckBoxes';
+import { type Dispatch } from 'react';
+import CheckCode from '@/types/CheckCode';
+import usePrefectures from './usePrefectures';
 
 type Props = {
   setCheckCodes: Dispatch<
-    React.SetStateAction<CHECKCODE[]>
+    React.SetStateAction<CheckCode[]>
   >;
 };
 
