@@ -1,3 +1,4 @@
+'use client';
 import styles from '@/components/Title/Title.module.css';
 
 export function Title({ title }: { title: string }) {
