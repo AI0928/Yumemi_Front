@@ -1,14 +1,14 @@
 'use client';
 import { Title } from '@/components/Title/Title';
-import OutPutCheckBoxes from '@/features/OutPutCheckBoxes';
+import OutPutCheckBoxes from '@/features/OutPutCheckBoxes/OutPutCheckBoxes';
 import styles from '@/app/page.module.css';
 import { useState } from 'react';
-import Population from '@/features/Population';
-import { CHECKCODE } from '@/types/CHECKCODE';
-import RadioButton from '@/components/RadioButton/RadioButton';
+import PopulationChart from '@/features/Population/Population';
+import CheckCode from '@/types/CheckCode';
+import RadioButton from '@/features/RadioButton/RadioButton';
 
 export default function Home() {
-  const [checkCodes, setCheckCodes] = useState<CHECKCODE[]>(
+  const [checkCodes, setCheckCodes] = useState<CheckCode[]>(
     []
   );
   const [selected, setSelected] =
@@ -34,7 +34,7 @@ export default function Home() {
         <Title title="人口データ折れ線グラフ" />
       </div>
       <div>
-        <Population
+        <PopulationChart
           selected={selected}
           checkCodes={checkCodes}
         />
