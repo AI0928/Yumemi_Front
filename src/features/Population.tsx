@@ -7,13 +7,14 @@ import {
   YAxis,
   Legend,
   Tooltip,
+  ResponsiveContainer,
 } from 'recharts';
 import { POPULATION } from '@/types/POPULATION';
 import axios from 'axios';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { CHECKCODE } from '@/types/CHECKCODE';
-
+import styles from '@/features/Population.module.css';
 type Props = {
   selected: string;
   checkCodes: CHECKCODE[];
@@ -174,44 +175,61 @@ const Population = (props: Props) => {
     }
   }, [populations, selected]);
 
+  const isMobile = window.innerWidth < 600;
+  const formatTickItem = (value: string | number) => {
+    if (typeof value === 'string') {
+      value = parseInt(value);
+    }
+
+    if (isMobile) {
+      return value >= 1000
+        ? `${value / 1000}K`
+        : value.toString();
+    } else {
+      return value.toString();
+    }
+  };
   if (populations.length !== 0) {
     return (
-      <div>
-        <LineChart
-          width={1000}
-          height={400}
-          data={chart_data}
-          margin={{
-            top: 50,
-            right: 60,
-            left: 50,
-            bottom: 50,
-          }}
-        >
-          <CartesianGrid stroke="#ccc" />
-          <XAxis
-            dataKey="year"
-            label={{
-              value: '年度',
-              position: 'insideRight',
-              offset: -55,
-            }}
-            interval={0}
-            angle={-30}
-            dx={-10}
-            dy={5}
-          />
-          <YAxis
-            label={{
-              value: '人口',
-              position: 'insideTop',
-              offset: -40,
-            }}
-          />
-          {lines}
-          <Legend />
-          <Tooltip />
-        </LineChart>
+      <div className={styles.container}>
+        <div className={styles.chartContainer}>
+          <ResponsiveContainer width="100%" height={400}>
+            <LineChart
+              data={chart_data}
+              margin={{
+                top: 50,
+                right: 60,
+                left: 50,
+                bottom: 50,
+              }}
+            >
+              <CartesianGrid stroke="#ccc" />
+              <XAxis
+                dataKey="year"
+                label={{
+                  value: '年度',
+                  position: 'insideRight',
+                  offset: -55,
+                }}
+                interval={isMobile ? 3 : 0} // モバイル表示では5つおきに表示
+                angle={-30}
+                dx={-10}
+                dy={5}
+              />
+              <YAxis
+                label={{
+                  value: '人口',
+                  position: 'insideTop',
+                  offset: -40,
+                }}
+                tickFormatter={formatTickItem}
+              />
+              {lines}
+              <Legend />
+              <Tooltip />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
       </div>
     );
   }
