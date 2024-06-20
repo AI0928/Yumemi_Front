@@ -1,18 +1,20 @@
-type BASE_DATA = {
+type BaseData = {
   year: number;
   value: number;
 };
 
-type RATE_DATA = BASE_DATA & {
+type RateDate = BaseData & {
   rate: number;
 };
 
-export type POPULATION = {
+type Population = {
   prefCode: string;
   prefName: string;
   boundaryYear: string;
   data: Array<{
     label: string;
-    data: Array<BASE_DATA | RATE_DATA>;
+    data: Array<BaseData | RateDate>;
   }>;
 };
+
+export default Population;

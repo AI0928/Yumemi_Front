@@ -9,85 +9,27 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
-import { POPULATION } from '@/types/POPULATION';
+import Population from '@/types/Population';
 import axios from 'axios';
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { CHECKCODE } from '@/types/CHECKCODE';
-import styles from '@/features/Population.module.css';
+import CheckCode from '@/types/CheckCode';
+import styles from '@/features/Population/Population.module.css';
+import filteredPopulations from './filteredPopulations';
+import transformData from './transformData';
+import isPrefCodeExist from './isPrefCodeExist';
+import TransformedData from '@/types/TransformData';
+
 type Props = {
   selected: string;
-  checkCodes: CHECKCODE[];
+  checkCodes: CheckCode[];
 };
 
-type TransformedData = {
-  year: string;
-  [key: string]: string | number;
-};
-
-function transformData(
-  population: POPULATION[],
-  selected: string
-): TransformedData[] {
-  // Create a map to store the data
-  let map: { [key: number]: TransformedData } = {};
-
-  // Iterate over each population data
-  population.forEach((pop) => {
-    // Iterate over each data in the population data
-    pop.data.forEach((data) => {
-      // Iterate over each base data or rate data
-      if (data.label === selected) {
-        data.data.forEach((baseData) => {
-          // If the year does not exist in the map, add it
-          if (!map[baseData.year]) {
-            map[baseData.year] = {
-              year: baseData.year.toString(),
-            };
-          }
-
-          // Add the population data to the map
-          map[baseData.year][pop.prefName] = baseData.value;
-        });
-      }
-    });
-  });
-
-  // Convert the map to an array
-  let result = Object.values(map);
-  return result;
-}
-
-const isPrefCodeExist = (
-  populations: POPULATION[],
-  code: string
-): boolean => {
-  return !populations.some(
-    (population) => population.prefCode === code
-  );
-};
-
-const filteredPopulations = (
-  // checkCodes: string[],
-  checkCodes: CHECKCODE[],
-  populations: POPULATION[]
-): POPULATION[] => {
-  const filteredPopulations = populations.filter(
-    (population) =>
-      // checkCodes.includes(populations.prefCode)
-      checkCodes.some(
-        (checkCode) =>
-          checkCode.prefCode === population.prefCode
-      )
-  );
-  return filteredPopulations;
-};
-
-const Population = (props: Props) => {
+const PopulationChart = (props: Props) => {
   const checkCodes = props.checkCodes;
   const selected = props.selected;
   const [populations, setPopulation] = useState<
-    POPULATION[]
+    Population[]
   >([]);
 
   const [lines, setLines] = useState<React.ReactNode[]>([]);
@@ -96,7 +38,7 @@ const Population = (props: Props) => {
   >([]);
   const [isMobile, setIsMobile] = useState<Boolean>();
   useEffect(() => {
-    const fetchData = async (checkCode: CHECKCODE) => {
+    const fetchData = async (checkCode: CheckCode) => {
       const URL =
         'https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?prefCode=' +
         checkCode.prefCode;
@@ -175,7 +117,6 @@ const Population = (props: Props) => {
     }
   }, [populations, selected]);
 
-  useState;
   useEffect(() => {
     setIsMobile(window.innerWidth < 600);
   }, []);
@@ -239,4 +180,4 @@ const Population = (props: Props) => {
   }
 };
 
-export default Population;
+export default PopulationChart;

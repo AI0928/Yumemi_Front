@@ -2,14 +2,14 @@
 'use client';
 import React from 'react';
 import { type Dispatch, useEffect } from 'react';
-import { PREF } from '@/types/PREF';
-import { CHECKCODE } from '@/types/CHECKCODE';
+import Prefecture from '@/types/Prefecture';
+import CheckCode from '@/types/CheckCode';
 
 type Props = {
-  pref: PREF;
+  pref: Prefecture;
   // setCheckCodes: Dispatch<React.SetStateAction<string[]>>;
   setCheckCodes: Dispatch<
-    React.SetStateAction<CHECKCODE[]>
+    React.SetStateAction<CheckCode[]>
   >;
 };
 export function GetChecked(props: Props) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { type Dispatch } from 'react';
-import styles from '@/components/RadioButton/RadioButton.module.css';
+import styles from '@/features/RadioButton/RadioButton.module.css';
 const items = [
   {
     id: 'totalPopulation',

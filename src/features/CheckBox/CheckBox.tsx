@@ -1,14 +1,14 @@
 'use client';
 import React from 'react';
-import styles from '@/components/CheckBox/CheckBox.module.css';
-import { GetChecked } from '@/features/GetChecked';
-import { PREF } from '@/types/PREF';
+import styles from '@/features/CheckBox/CheckBox.module.css';
+import { GetChecked } from '@/features/CheckBox/GetChecked';
+import Prefecture from '@/types/Prefecture';
 import { type Dispatch } from 'react';
-import { CHECKCODE } from '@/types/CHECKCODE';
+import CheckCode from '@/types/CheckCode';
 type PrefProps = {
-  pref: PREF;
+  pref: Prefecture;
   setCheckCodes: Dispatch<
-    React.SetStateAction<CHECKCODE[]>
+    React.SetStateAction<CheckCode[]>
   >;
 };
 

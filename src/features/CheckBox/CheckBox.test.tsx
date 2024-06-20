@@ -1,13 +1,12 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { CheckBox } from '@/components/CheckBox/CheckBox';
-import { PREF } from '@/types/PREF';
-import { CHECKCODE } from '@/types/CHECKCODE';
+import { CheckBox } from '@/features/CheckBox/CheckBox';
+import Prefecture from '@/types/Prefecture';
 
 // テストを記述します
 describe('CheckBox', () => {
   it('renders correctly', () => {
-    const pref: PREF = {
+    const pref: Prefecture = {
       prefCode: '1',
       prefName: '北海道',
     };
@@ -23,7 +22,7 @@ describe('CheckBox', () => {
   });
 
   it('calls setCheckCodes when clicked', () => {
-    const pref: PREF = {
+    const pref: Prefecture = {
       prefCode: '1',
       prefName: '北海道',
     };
