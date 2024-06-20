@@ -1,0 +1,7 @@
+.container {
+  display: flex; /* Flexboxを使用 */
+  justify-content: center; /* 横方向の中央揃え */
+  flex-wrap: wrap; /* 項目がコンテナの幅を超えるときに折り返す */
+  max-width: 80%; /* 可変の最大幅 */
+  margin: 0 auto; /* 画面中央に配置 */
+}
