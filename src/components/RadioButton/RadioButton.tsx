@@ -1,6 +1,6 @@
 import React from 'react';
 import { type Dispatch } from 'react';
-
+import styles from '@/components/RadioButton/RadioButton.module.css';
 const items = [
   {
     id: 'totalPopulation',
@@ -31,7 +31,6 @@ type Props = {
 
 const RadioButton = (props: Props) => {
   /** 選択中のラジオボタンvalue */
-  // const [selected, setSelected] = useState<number>(0);
   const setSelected = props.setSelected;
   const selected = props.selected;
   /** ラジオボタン切り替えイベント */
@@ -39,7 +38,7 @@ const RadioButton = (props: Props) => {
     event: React.ChangeEvent<HTMLInputElement>
   ) => setSelected(event.target.value);
   return (
-    <div>
+    <div className={styles.container}>
       {items.map((item) => {
         return (
           <div key={item.id}>

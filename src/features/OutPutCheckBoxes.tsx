@@ -8,7 +8,6 @@ import { type Dispatch, useState, useEffect } from 'react';
 import { CHECKCODE } from '@/types/CHECKCODE';
 
 type Props = {
-  // setCheckCodes: Dispatch<React.SetStateAction<string[]>>;
   setCheckCodes: Dispatch<
     React.SetStateAction<CHECKCODE[]>
   >;

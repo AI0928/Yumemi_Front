@@ -1,0 +1,19 @@
+@media (min-width: 600px) {
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+  .chartContainer {
+    width: 80%;
+    max-width: 1000px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    justify-content: center;
+  }
+  .chartContainer {
+    max-width: 100%;
+  }
+}
