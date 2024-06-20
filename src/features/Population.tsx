@@ -94,7 +94,7 @@ const Population = (props: Props) => {
   const [chart_data, setChart_data] = useState<
     TransformedData[]
   >([]);
-
+  const [isMobile, setIsMobile] = useState<Boolean>();
   useEffect(() => {
     const fetchData = async (checkCode: CHECKCODE) => {
       const URL =
@@ -175,7 +175,11 @@ const Population = (props: Props) => {
     }
   }, [populations, selected]);
 
-  const isMobile = window.innerWidth < 600;
+  useState;
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 600);
+  }, []);
+
   const formatTickItem = (value: string | number) => {
     if (typeof value === 'string') {
       value = parseInt(value);
